@@ -12,7 +12,7 @@ y_list=[]
 child_list=[]
 rlist=[]
 #################################################################
-#class for inserting classes --eg:- semester 6 cse alpha,semester 8 cse alpha...etc. 
+#class for inserting classes --eg:-semester 6 cse alpha,semester 8 cse alpha...etc. 
 class day:
     def __init__(self,name):
         self.name=name
