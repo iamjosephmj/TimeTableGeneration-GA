@@ -54,7 +54,7 @@ def trun(t):
     ch=''
     for i in t:
         if i!='\n':
-            ch=ch+i
+            ch+=i
         else:
             return ch
 #Generation of time tables -- such that no teachers will have hours in different classes at the same time
@@ -86,8 +86,7 @@ def generate():
             while cnt > 0:
                 cnt=cnt-1
                 dup.append(table[cnt])
-            m=0
-            fg=0
+            m,fg=0,0
             while m < 7:
                 fg=0
                 a=random.choice(item.tlist)
@@ -97,8 +96,7 @@ def generate():
                 if fg == 0:
                     m=m+1
                     t.op1(a)
-            m=0
-            fg=0
+            m,fg=0,0
             while m < 7:
                 fg=0
                 a=random.choice(item.tlist)
@@ -108,8 +106,7 @@ def generate():
                 if fg == 0:
                     m=m+1
                     t.op2(a)
-            m=0
-            fg=0
+            m,fg=0,0
             while m < 7:
                 fg=0
                 a=random.choice(item.tlist)
@@ -119,8 +116,7 @@ def generate():
                 if fg == 0:
                     m=m+1
                     t.op3(a)
-            m=0
-            fg=0
+            m,fg=0,0
             while m < 7:
                 fg=0
                 a=random.choice(item.tlist)
@@ -130,8 +126,7 @@ def generate():
                 if fg == 0:
                     m=m+1
                     t.op4(a)
-            m=0
-            fg=0
+            m,fg=0,0
             while m < 7:
                 fg=0
                 a=random.choice(item.tlist)
@@ -422,7 +417,7 @@ def crossover():
     re=0
     lib=[0,1]
     child_list=[]
-    randu=[0,1,2,3,4,5,6]
+    randu=[item for item in xrange(7)]
     m=-1
     for item1 in x_list:
         m=m+1
@@ -656,8 +651,8 @@ while ft!=gen+1:
     ft=fitness()
     if pre < ft:
         pre=copy(ft)
-        pop(ft,generation)
-    shuffle()
+        pop(ft,generation)  
+    shuffle()   #change this to database bacause doing the shuffle operation takes time while doing it with files.
     generation=generation+1
     print("generation=",generation,"fitness=",ft)
     a=open("johny.txt",'wb')
